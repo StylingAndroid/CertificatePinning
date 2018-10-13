@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+  <domain-config>
+    <domain includeSubdomains="true">stylingandroid.com</domain>
+    <pin-set>
+      <pin digest="SHA-256">htJkaSJB+j8Ckv7ovGieQJYqyV/M4K7YRt4je18A7T4=</pin>
+      <!-- backup pin -->
+      <pin digest="SHA-256">x9SZw6TwIqfmvrLZ/kz1o0Ossjmn728BnBKpUFqGNVM=</pin>
+    </pin-set>
+  </domain-config>
+</network-security-config>

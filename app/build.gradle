@@ -1,0 +1,62 @@
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "1.0.0.RC9.2"
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.stylingandroid.certificatepinning"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.core:core-ktx:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+}
+
+//configurations {
+//    detekt
+//}
+
+detekt {
+    version = "1.0.0.RC9.2"
+    //profile("main") {
+        input = files("src/main/java")
+        //config = files(detekt.yml"
+        //output = "$project.buildDir/reports/detekt.xml"
+        //outputFormat = "xml"
+        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+    //}
+}
+
+//task detekt(type: JavaExec) {
+//    main = "io.gitlab.arturbosch.detekt.cli.Main"
+//    classpath = configurations.detekt
+//    def input = "$projectDir"
+//    def config = "$projectDir/detekt.yml"
+//    def filters = ".*/build/.*,.*/resources/.*"
+//    def rulesets = ""
+//    def params = ['-i', input, '-c', config, '-f', filters, '-r', rulesets]
+//    args(params)
+//}
+
+//check.dependsOn detekt
